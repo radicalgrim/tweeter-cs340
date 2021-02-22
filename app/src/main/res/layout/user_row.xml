@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
     tools:context=".view.main.following.FollowingFragment">
 
     <ImageView
@@ -11,6 +13,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerVertical="true"
+        android:layout_marginEnd="10dp"
         android:contentDescription="@string/userImageContentDescription" />
 
     <LinearLayout

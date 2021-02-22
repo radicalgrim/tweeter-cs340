@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="First Name:" />
+                android:text="@string/first_name_prompt" />
             <EditText
                 android:id="@+id/firstNameField"
                 android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Last Name:" />
+                android:text="@string/last_name_prompt" />
             <EditText
                 android:id="@+id/lastNameField"
                 android:layout_width="wrap_content"
@@ -45,13 +45,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="User Name:" />
+                android:text="@string/user_name_prompt" />
             <EditText
                 android:id="@+id/usernameField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="3"
                 android:inputType="textPersonName" />
+                <!--android:text="@string/dummy_username"-->
             <!--                    tools:text="Host:number" />-->
         </TableRow>
         <TableRow>
@@ -59,13 +60,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Password:" />
+                android:text="@string/password_prompt" />
             <EditText
                 android:id="@+id/passwordField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="3"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
+                <!--android:text="@string/dummy_password" -->
             <!--                    tools:text="Host:number" />-->
         </TableRow>
         <TableRow>
@@ -73,13 +75,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="Photo URL:" />
+                android:text="@string/photo_url_prompt" />
             <EditText
                 android:id="@+id/photoUrlField"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_span="3"
-                android:inputType="textPersonName" />
+                android:inputType="textUri" />
             <!--                    tools:text="Host:number" />-->
         </TableRow>
 
@@ -93,13 +95,13 @@
                 android:id="@+id/LoginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="Login"/>
+                android:layout_marginEnd="10dp"
+                android:text="@string/login_button_prompt"/>
             <Button
                 android:id="@+id/RegisterButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Register"/>
+                android:text="@string/register_button_prompt"/>
         </LinearLayout>
     </TableLayout>
 <!--    <TextView-->

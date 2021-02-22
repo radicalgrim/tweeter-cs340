@@ -4,14 +4,13 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.byu.cs.tweeter.model.domain.Status;
-import edu.byu.cs.tweeter.model.domain.Story;
 
 /**
  * A paged response for a {@link edu.byu.cs.tweeter.model.service.request.StoryRequest}.
  */
 public class StoryResponse extends PagedResponse {
 
-    private Story story;
+    private List<Status> statuses;
 
     /**
      * Creates a response indicating that the corresponding request was unsuccessful. Sets the
@@ -29,18 +28,18 @@ public class StoryResponse extends PagedResponse {
      * @param story the statuses to be included in the result.
      * @param hasMorePages an indicator of whether more data is available for the request.
      */
-    public StoryResponse(Story story, boolean hasMorePages) {
+    public StoryResponse(List<Status> statuses, boolean hasMorePages) {
         super(true, hasMorePages);
-        this.story = story;
+        this.statuses = statuses;
     }
 
 
-    public Story getStory() {
-        return story;
+    public List<Status> getStatuses() {
+        return statuses;
     }
 
-    public void setStory(Story story) {
-        this.story = story;
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
     }
 
     @Override
@@ -55,14 +54,14 @@ public class StoryResponse extends PagedResponse {
 
         StoryResponse that = (StoryResponse) param;
 
-        return (Objects.equals(story, that.story) &&
+        return (Objects.equals(statuses, that.statuses) &&
                 Objects.equals(this.getMessage(), that.getMessage()) &&
                 this.isSuccess() == that.isSuccess());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(story);
+        return Objects.hash(statuses);
     }
 
 }

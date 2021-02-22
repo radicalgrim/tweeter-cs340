@@ -5,12 +5,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import edu.byu.cs.tweeter.BuildConfig;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
-import edu.byu.cs.tweeter.model.domain.Story;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.request.FollowingRequest;
 import edu.byu.cs.tweeter.model.service.request.LoginRequest;
@@ -20,8 +18,6 @@ import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 import edu.byu.cs.tweeter.model.service.response.StoryResponse;
 import edu.byu.cs.tweeter.model.service.request.LogoutRequest;
 import edu.byu.cs.tweeter.model.service.request.RegisterRequest;
-import edu.byu.cs.tweeter.model.service.response.FollowingResponse;
-import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 import edu.byu.cs.tweeter.model.service.response.LogoutResponse;
 import edu.byu.cs.tweeter.model.service.response.RegisterResponse;
 
@@ -82,26 +78,26 @@ public class ServerFacade {
     private final User user20 = new User("Jill", "Johnson", FEMALE_IMAGE_URL);
 
 
-    private final Status status1 = new Status("Hello World 1", "user1", MALE_IMAGE_URL);
-    private final Status status2 = new Status("Hello World 2", "user2", MALE_IMAGE_URL);
-    private final Status status3 = new Status("Hello World 3", "user3", MALE_IMAGE_URL);
-    private final Status status4 = new Status("Hello World 4", "user4", MALE_IMAGE_URL);
-    private final Status status5 = new Status("Hello World 5", "user5", MALE_IMAGE_URL);
-    private final Status status6 = new Status("Hello World 6", "user6", MALE_IMAGE_URL);
-    private final Status status7 = new Status("Hello World 7", "user7", MALE_IMAGE_URL);
-    private final Status status8 = new Status("Hello World 8", "user8", MALE_IMAGE_URL);
-    private final Status status9 = new Status("Hello World 9", "user9", MALE_IMAGE_URL);
-    private final Status status10 = new Status("Hello World 10", "user10", MALE_IMAGE_URL);
-    private final Status status11 = new Status("Hello World 11", "user11", MALE_IMAGE_URL);
-    private final Status status12 = new Status("Hello World 12", "user12", MALE_IMAGE_URL);
-    private final Status status13 = new Status("Hello World 13", "user13", MALE_IMAGE_URL);
-    private final Status status14 = new Status("Hello World 14", "user14", MALE_IMAGE_URL);
-    private final Status status15 = new Status("Hello World 15", "user15", MALE_IMAGE_URL);
-    private final Status status16 = new Status("Hello World 16", "user16", MALE_IMAGE_URL);
-    private final Status status17 = new Status("Hello World 17", "user17", MALE_IMAGE_URL);
-    private final Status status18 = new Status("Hello World 18", "user18", MALE_IMAGE_URL);
-    private final Status status19 = new Status("Hello World 19", "user19", MALE_IMAGE_URL);
-    private final Status status20 = new Status("Hello World 20", "user20", MALE_IMAGE_URL);
+    private final Status status1 = new Status("Hello World 1", "@user1", "google.com", "Feb. 2, 2021 1:00", user1);
+    private final Status status2 = new Status("Hello World 2", "@user2", "google.com", "Feb. 2, 2021 2:00", user1);
+    private final Status status3 = new Status("Hello World 3", "@user3", "google.com", "Feb. 2, 2021 3:00", user1);
+    private final Status status4 = new Status("Hello World 4", "@user4", "google.com", "Feb. 2, 2021 4:00", user1);
+    private final Status status5 = new Status("Hello World 5", "@user5", "google.com", "Feb. 2, 2021 5:00", user1);
+    private final Status status6 = new Status("Hello World 6", "@user6", "google.com", "Feb. 2, 2021 6:00", user1);
+    private final Status status7 = new Status("Hello World 7", "@user7", "google.com", "Feb. 2, 2021 7:00", user1);
+    private final Status status8 = new Status("Hello World 8", "@user8", "google.com", "Feb. 2, 2021 8:00", user1);
+    private final Status status9 = new Status("Hello World 9", "@user9", "google.com", "Feb. 2, 2021 9:00", user1);
+    private final Status status10 = new Status("Hello World 10", "@user10", "google.com", "Feb. 2, 2021 10:00", user1);
+    private final Status status11 = new Status("Hello World 11", "@user11", "google.com", "Feb. 2, 2021 11:00", user1);
+    private final Status status12 = new Status("Hello World 12", "@user12", "google.com", "Feb. 2, 2021 12:00", user1);
+    private final Status status13 = new Status("Hello World 13", "@user13", "google.com", "Feb. 2, 2021 13:00", user1);
+    private final Status status14 = new Status("Hello World 14", "@user14", "google.com", "Feb. 2, 2021 14:00", user1);
+    private final Status status15 = new Status("Hello World 15", "@user15", "google.com", "Feb. 2, 2021 15:00", user1);
+    private final Status status16 = new Status("Hello World 16", "@user16", "google.com", "Feb. 2, 2021 16:00", user1);
+    private final Status status17 = new Status("Hello World 17", "@user17", "google.com", "Feb. 2, 2021 17:00", user1);
+    private final Status status18 = new Status("Hello World 18", "@user18", "google.com", "Feb. 2, 2021 18:00", user1);
+    private final Status status19 = new Status("Hello World 19", "@user19", "google.com", "Feb. 2, 2021 19:00", user1);
+    private final Status status20 = new Status("Hello World 20", "@user20", "google.com", "Feb. 2, 2021 20:00", user1);
 
 
     /**
@@ -245,41 +241,53 @@ public class ServerFacade {
      *                other information required to satisfy the request.
      * @return the story response.
      */
-    public StoryResponse getStory(StoryRequest request) {
+    public StoryResponse getStatuses(StoryRequest request) {
 
         // Used in place of assert statements because Android does not support them
         if(BuildConfig.DEBUG) {
             if(request.getLimit() < 0) {
                 throw new AssertionError();
             }
-
-            if(request.getLastTimestamp() == null) {
+            if(request.getUserAlias() == null) {
                 throw new AssertionError();
             }
         }
 
-        TreeMap<String, Status> dummyStatuses = getDummyStory().getStatusMap();
-        Story responseStory = new Story(getDummyStory().getUserAlias());
+        List<Status> dummyStatuses = getDummyStatuses();
+        List<Status> responseStatuses = new ArrayList<>(request.getLimit());
 
-        boolean hasMorePages = true;
+        boolean hasMorePages = false;
 
-        if(request.getLimit() > 0) {
+        if (request.getLimit() > 0) {
+            int statusIndex = getStatusesStartingIndex(request.getLastTimestamp(), dummyStatuses);
 
-            String lastTimestamp = request.getLastTimestamp();
+            for (int limitCount = 0; statusIndex < dummyStatuses.size() && limitCount < request.getLimit(); statusIndex++, limitCount++) {
+                responseStatuses.add(dummyStatuses.get(statusIndex));
+            }
 
-            for(int i = 0; i < request.getLimit(); i++) {
-                responseStory.addStatus(lastTimestamp, dummyStatuses.get(lastTimestamp));
-                if (dummyStatuses.higherKey(lastTimestamp) == null) {
-                    hasMorePages = false;
+            hasMorePages = statusIndex < dummyStatuses.size();
+        }
+
+        return new StoryResponse(responseStatuses, hasMorePages);
+    }
+
+    private int getStatusesStartingIndex(String lastStatusTimestamp, List<Status> statuses) {
+
+        int statusIndex = 0;
+
+        if (lastStatusTimestamp != null) {
+            // This is a paged request for something after the first page. Find the first item
+            // we should return
+            for (int i = 0; i < statuses.size(); i++) {
+                if (lastStatusTimestamp.equals(statuses.get(i).getTimestamp())) {
+                    // We found the index of the last item returned last time. Increment to get
+                    // to the first one we should return
+                    statusIndex = i + 1;
                     break;
-                }
-                else {
-                    lastTimestamp = dummyStatuses.higherKey(lastTimestamp);
                 }
             }
         }
-
-        return new StoryResponse(responseStory, hasMorePages);
+        return statusIndex;
     }
 
     /**
@@ -288,18 +296,10 @@ public class ServerFacade {
      *
      * @return the story.
      */
-    Story getDummyStory() {
-
-        Story story = new Story("dummy");
-        List<Status> statuses = Arrays.asList(status1, status2, status3, status4, status5, status6, status7,
+    List<Status> getDummyStatuses() {
+        return Arrays.asList(status1, status2, status3, status4, status5, status6, status7,
                 status8, status9, status10, status11, status12, status13, status14, status15,
                 status16, status17, status18, status19, status20);
-
-        for (int i = 0; i < statuses.size(); i++) {
-            story.addStatus(Integer.toString(i), statuses.get(i));
-        }
-
-        return story;
     }
 
   
@@ -324,18 +324,11 @@ public class ServerFacade {
     }
 
     Boolean checkUsername(String username) {
-        if (aliasToUser.get(username) != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return aliasToUser.get(username) != null;
     }
 
     Boolean checkPassword(String alias, String password){
-        if(aliasToPassword.get(alias).equals(password)){
-            return true;
-        }
-        return false;
+        return aliasToPassword.get(alias).equals(password);
     }
 
     public void invalidateAuthToken(){

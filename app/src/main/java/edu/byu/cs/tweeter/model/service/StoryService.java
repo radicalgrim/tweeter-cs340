@@ -21,7 +21,7 @@ public class StoryService {
      * @return the story.
      */
     public StoryResponse getStory(StoryRequest request) throws IOException {
-        StoryResponse response = getServerFacade().getStory(request);
+        StoryResponse response = getServerFacade().getStatuses(request);
 
         if(response.isSuccess()) {
             // TODO: Implement
