@@ -1,10 +1,6 @@
-edu/byu/cs/tweeter/util/ByteArrayUtils.java
- edu.byu.cs.tweeter.util.ByteArrayUtils
-edu/byu/cs/tweeter/view/main/PlaceholderFragment.java
- edu.byu.cs.tweeter.view.main.PlaceholderFragment
- edu.byu.cs.tweeter.view.main.PlaceholderFragment$1
-edu/byu/cs/tweeter/model/service/response/LogoutResponse.java
- edu.byu.cs.tweeter.model.service.response.LogoutResponse
+edu/byu/cs/tweeter/presenter/FollowerPresenter.java
+ edu.byu.cs.tweeter.presenter.FollowerPresenter
+ edu.byu.cs.tweeter.presenter.FollowerPresenter$View
 edu/byu/cs/tweeter/model/service/response/Response.java
  edu.byu.cs.tweeter.model.service.response.Response
 edu/byu/cs/tweeter/view/asyncTasks/LogoutTask.java
@@ -14,22 +10,21 @@ edu/byu/cs/tweeter/model/service/response/StoryResponse.java
  edu.byu.cs.tweeter.model.service.response.StoryResponse
 edu/byu/cs/tweeter/model/service/request/StoryRequest.java
  edu.byu.cs.tweeter.model.service.request.StoryRequest
-edu/byu/cs/tweeter/model/service/response/FollowingResponse.java
- edu.byu.cs.tweeter.model.service.response.FollowingResponse
 edu/byu/cs/tweeter/model/domain/Status.java
  edu.byu.cs.tweeter.model.domain.Status
+edu/byu/cs/tweeter/view/main/status/StatusFragment.java
+ edu.byu.cs.tweeter.view.main.status.StatusFragment
+ edu.byu.cs.tweeter.view.main.status.StatusFragment$StatusHolder
+ edu.byu.cs.tweeter.view.main.status.StatusFragment$StatusHolder$1
+ edu.byu.cs.tweeter.view.main.status.StatusFragment$StatusRecyclerViewAdapter
 edu/byu/cs/tweeter/model/service/response/PagedResponse.java
  edu.byu.cs.tweeter.model.service.response.PagedResponse
-edu/byu/cs/tweeter/model/service/request/LoginRequest.java
- edu.byu.cs.tweeter.model.service.request.LoginRequest
+edu/byu/cs/tweeter/view/asyncTasks/status/GetFeedTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.status.GetFeedTask
 edu/byu/cs/tweeter/model/service/LoginService.java
  edu.byu.cs.tweeter.model.service.LoginService
 edu/byu/cs/tweeter/model/service/LogoutService.java
  edu.byu.cs.tweeter.model.service.LogoutService
-edu/byu/cs/tweeter/model/net/ServerFacade.java
- edu.byu.cs.tweeter.model.net.ServerFacade
-edu/byu/cs/tweeter/model/service/request/FollowingRequest.java
- edu.byu.cs.tweeter.model.service.request.FollowingRequest
 edu/byu/cs/tweeter/model/service/RegisterService.java
  edu.byu.cs.tweeter.model.service.RegisterService
 edu/byu/cs/tweeter/model/domain/Follow.java
@@ -37,16 +32,6 @@ edu/byu/cs/tweeter/model/domain/Follow.java
 edu/byu/cs/tweeter/view/asyncTasks/RegisterTask.java
  edu.byu.cs.tweeter.view.asyncTasks.RegisterTask
  edu.byu.cs.tweeter.view.asyncTasks.RegisterTask$Observer
-edu/byu/cs/tweeter/view/main/story/StoryFragment.java
- edu.byu.cs.tweeter.view.main.story.StoryFragment
- edu.byu.cs.tweeter.view.main.story.StoryFragment$StoryHolder
- edu.byu.cs.tweeter.view.main.story.StoryFragment$StoryRecyclerViewAdapter
- edu.byu.cs.tweeter.view.main.story.StoryFragment$StoryRecyclerViewPaginationScrollListener
-edu/byu/cs/tweeter/model/service/response/RegisterResponse.java
- edu.byu.cs.tweeter.model.service.response.RegisterResponse
-edu/byu/cs/tweeter/presenter/RegisterPresenter.java
- edu.byu.cs.tweeter.presenter.RegisterPresenter
- edu.byu.cs.tweeter.presenter.RegisterPresenter$View
 edu/byu/cs/tweeter/presenter/StoryPresenter.java
  edu.byu.cs.tweeter.presenter.StoryPresenter
  edu.byu.cs.tweeter.presenter.StoryPresenter$View
@@ -61,8 +46,88 @@ edu/byu/cs/tweeter/presenter/FollowingPresenter.java
 edu/byu/cs/tweeter/view/main/PageViewModel.java
  edu.byu.cs.tweeter.view.main.PageViewModel
  edu.byu.cs.tweeter.view.main.PageViewModel$1
+edu/byu/cs/tweeter/model/service/response/StatusResponse.java
+ edu.byu.cs.tweeter.model.service.response.StatusResponse
+edu/byu/cs/tweeter/model/service/response/FeedResponse.java
+ edu.byu.cs.tweeter.model.service.response.FeedResponse
+edu/byu/cs/tweeter/BuildConfig.java
+ edu.byu.cs.tweeter.BuildConfig
+edu/byu/cs/tweeter/model/service/request/FollowerRequest.java
+ edu.byu.cs.tweeter.model.service.request.FollowerRequest
+edu/byu/cs/tweeter/presenter/LoginPresenter.java
+ edu.byu.cs.tweeter.presenter.LoginPresenter
+ edu.byu.cs.tweeter.presenter.LoginPresenter$View
+edu/byu/cs/tweeter/presenter/LogoutPresenter.java
+ edu.byu.cs.tweeter.presenter.LogoutPresenter
+ edu.byu.cs.tweeter.presenter.LogoutPresenter$View
+edu/byu/cs/tweeter/model/service/request/LogoutRequest.java
+ edu.byu.cs.tweeter.model.service.request.LogoutRequest
+edu/byu/cs/tweeter/view/asyncTasks/status/GetStoryTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.status.GetStoryTask
+edu/byu/cs/tweeter/model/domain/AuthToken.java
+ edu.byu.cs.tweeter.model.domain.AuthToken
+edu/byu/cs/tweeter/model/service/FeedService.java
+ edu.byu.cs.tweeter.model.service.FeedService
+edu/byu/cs/tweeter/model/service/StoryService.java
+ edu.byu.cs.tweeter.model.service.StoryService
+edu/byu/cs/tweeter/view/asyncTasks/follows/GetFollowerTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.follows.GetFollowerTask
+edu/byu/cs/tweeter/model/service/FollowerService.java
+ edu.byu.cs.tweeter.model.service.FollowerService
+edu/byu/cs/tweeter/view/main/status/StoryFragment.java
+ edu.byu.cs.tweeter.view.main.status.StoryFragment
+ edu.byu.cs.tweeter.view.main.status.StoryFragment$StoryHolder
+ edu.byu.cs.tweeter.view.main.status.StoryFragment$StoryRecyclerViewAdapter
+ edu.byu.cs.tweeter.view.main.status.StoryFragment$StoryRecyclerViewPaginationScrollListener
+edu/byu/cs/tweeter/util/ByteArrayUtils.java
+ edu.byu.cs.tweeter.util.ByteArrayUtils
+edu/byu/cs/tweeter/view/main/PlaceholderFragment.java
+ edu.byu.cs.tweeter.view.main.PlaceholderFragment
+ edu.byu.cs.tweeter.view.main.PlaceholderFragment$1
+edu/byu/cs/tweeter/model/service/response/LogoutResponse.java
+ edu.byu.cs.tweeter.model.service.response.LogoutResponse
+edu/byu/cs/tweeter/view/main/follows/FollowerFragment.java
+ edu.byu.cs.tweeter.view.main.follows.FollowerFragment
+ edu.byu.cs.tweeter.view.main.follows.FollowerFragment$FollowerHolder
+ edu.byu.cs.tweeter.view.main.follows.FollowerFragment$FollowerRecyclerViewAdapter
+ edu.byu.cs.tweeter.view.main.follows.FollowerFragment$FollowerRecyclerViewPaginationScrollListener
+edu/byu/cs/tweeter/view/main/follows/FollowsFragment.java
+ edu.byu.cs.tweeter.view.main.follows.FollowsFragment
+ edu.byu.cs.tweeter.view.main.follows.FollowsFragment$FollowsHolder
+ edu.byu.cs.tweeter.view.main.follows.FollowsFragment$FollowsRecyclerViewAdapter
+edu/byu/cs/tweeter/model/service/response/FollowingResponse.java
+ edu.byu.cs.tweeter.model.service.response.FollowingResponse
+edu/byu/cs/tweeter/view/main/status/FeedFragment.java
+ edu.byu.cs.tweeter.view.main.status.FeedFragment
+ edu.byu.cs.tweeter.view.main.status.FeedFragment$FeedHolder
+ edu.byu.cs.tweeter.view.main.status.FeedFragment$FeedRecyclerViewAdapter
+ edu.byu.cs.tweeter.view.main.status.FeedFragment$FeedRecyclerViewPaginationScrollListener
+edu/byu/cs/tweeter/model/service/request/LoginRequest.java
+ edu.byu.cs.tweeter.model.service.request.LoginRequest
+edu/byu/cs/tweeter/model/net/ServerFacade.java
+ edu.byu.cs.tweeter.model.net.ServerFacade
+edu/byu/cs/tweeter/model/service/request/FollowingRequest.java
+ edu.byu.cs.tweeter.model.service.request.FollowingRequest
+edu/byu/cs/tweeter/model/service/response/RegisterResponse.java
+ edu.byu.cs.tweeter.model.service.response.RegisterResponse
+edu/byu/cs/tweeter/presenter/RegisterPresenter.java
+ edu.byu.cs.tweeter.presenter.RegisterPresenter
+ edu.byu.cs.tweeter.presenter.RegisterPresenter$View
+edu/byu/cs/tweeter/view/asyncTasks/status/GetStatusTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.status.GetStatusTask
+ edu.byu.cs.tweeter.view.asyncTasks.status.GetStatusTask$Observer
 edu/byu/cs/tweeter/model/service/response/LoginResponse.java
  edu.byu.cs.tweeter.model.service.response.LoginResponse
+edu/byu/cs/tweeter/presenter/FeedPresenter.java
+ edu.byu.cs.tweeter.presenter.FeedPresenter
+ edu.byu.cs.tweeter.presenter.FeedPresenter$View
+edu/byu/cs/tweeter/model/service/AbstractService.java
+ edu.byu.cs.tweeter.model.service.AbstractService
+edu/byu/cs/tweeter/view/main/follows/FollowingFragment.java
+ edu.byu.cs.tweeter.view.main.follows.FollowingFragment
+ edu.byu.cs.tweeter.view.main.follows.FollowingFragment$FollowRecyclerViewPaginationScrollListener
+ edu.byu.cs.tweeter.view.main.follows.FollowingFragment$FollowingHolder
+ edu.byu.cs.tweeter.view.main.follows.FollowingFragment$FollowingRecyclerViewAdapter
 edu/byu/cs/tweeter/view/LoginActivity.java
  edu.byu.cs.tweeter.view.LoginActivity
  edu.byu.cs.tweeter.view.LoginActivity$1
@@ -72,40 +137,25 @@ edu/byu/cs/tweeter/view/LoginActivity.java
  edu.byu.cs.tweeter.view.LoginActivity$5
  edu.byu.cs.tweeter.view.LoginActivity$6
  edu.byu.cs.tweeter.view.LoginActivity$7
-edu/byu/cs/tweeter/BuildConfig.java
- edu.byu.cs.tweeter.BuildConfig
-edu/byu/cs/tweeter/presenter/LoginPresenter.java
- edu.byu.cs.tweeter.presenter.LoginPresenter
- edu.byu.cs.tweeter.presenter.LoginPresenter$View
+edu/byu/cs/tweeter/model/service/response/FollowsResponse.java
+ edu.byu.cs.tweeter.model.service.response.FollowsResponse
+edu/byu/cs/tweeter/view/asyncTasks/follows/GetFollowingTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.follows.GetFollowingTask
 edu/byu/cs/tweeter/model/service/request/RegisterRequest.java
  edu.byu.cs.tweeter.model.service.request.RegisterRequest
-edu/byu/cs/tweeter/presenter/LogoutPresenter.java
- edu.byu.cs.tweeter.presenter.LogoutPresenter
- edu.byu.cs.tweeter.presenter.LogoutPresenter$View
-edu/byu/cs/tweeter/model/service/request/LogoutRequest.java
- edu.byu.cs.tweeter.model.service.request.LogoutRequest
 edu/byu/cs/tweeter/view/asyncTasks/LoginTask.java
  edu.byu.cs.tweeter.view.asyncTasks.LoginTask
  edu.byu.cs.tweeter.view.asyncTasks.LoginTask$Observer
-edu/byu/cs/tweeter/model/domain/AuthToken.java
- edu.byu.cs.tweeter.model.domain.AuthToken
+edu/byu/cs/tweeter/model/service/response/FollowerResponse.java
+ edu.byu.cs.tweeter.model.service.response.FollowerResponse
+edu/byu/cs/tweeter/view/asyncTasks/follows/GetFollowsTask.java
+ edu.byu.cs.tweeter.view.asyncTasks.follows.GetFollowsTask
+ edu.byu.cs.tweeter.view.asyncTasks.follows.GetFollowsTask$Observer
 edu/byu/cs/tweeter/model/service/FollowingService.java
  edu.byu.cs.tweeter.model.service.FollowingService
-edu/byu/cs/tweeter/model/service/StoryService.java
- edu.byu.cs.tweeter.model.service.StoryService
-edu/byu/cs/tweeter/view/asyncTasks/GetStoryTask.java
- edu.byu.cs.tweeter.view.asyncTasks.GetStoryTask
- edu.byu.cs.tweeter.view.asyncTasks.GetStoryTask$Observer
-edu/byu/cs/tweeter/view/main/following/FollowingFragment.java
- edu.byu.cs.tweeter.view.main.following.FollowingFragment
- edu.byu.cs.tweeter.view.main.following.FollowingFragment$FollowRecyclerViewPaginationScrollListener
- edu.byu.cs.tweeter.view.main.following.FollowingFragment$FollowingHolder
- edu.byu.cs.tweeter.view.main.following.FollowingFragment$FollowingHolder$1
- edu.byu.cs.tweeter.view.main.following.FollowingFragment$FollowingRecyclerViewAdapter
+edu/byu/cs/tweeter/model/service/request/FeedRequest.java
+ edu.byu.cs.tweeter.model.service.request.FeedRequest
 edu/byu/cs/tweeter/view/main/SectionsPagerAdapter.java
  edu.byu.cs.tweeter.view.main.SectionsPagerAdapter
 edu/byu/cs/tweeter/model/domain/User.java
  edu.byu.cs.tweeter.model.domain.User
-edu/byu/cs/tweeter/view/asyncTasks/GetFollowingTask.java
- edu.byu.cs.tweeter.view.asyncTasks.GetFollowingTask
- edu.byu.cs.tweeter.view.asyncTasks.GetFollowingTask$Observer

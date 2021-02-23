@@ -1117,7 +1117,7 @@ id firstNameField
 id fixed
 id followeeCount
 id followerCount
-id followingRecyclerView
+id followsRecyclerView
 id forever
 id ghost_view
 id gone
@@ -1213,8 +1213,9 @@ id src_in
 id src_over
 id standard
 id start
+id statusRecyclerView
 id status_bar_latest_event_content
-id storyRecyclerView
+id status_user_info
 id stretch
 id submenuarrow
 id submit_area
@@ -1325,9 +1326,9 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
-layout fragment_following
+layout fragment_follows
 layout fragment_placeholder
-layout fragment_story
+layout fragment_status
 layout loading_row
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
