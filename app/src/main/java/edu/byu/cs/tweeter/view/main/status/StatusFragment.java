@@ -1,5 +1,10 @@
 package edu.byu.cs.tweeter.view.main.status;
 
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.URLSpan;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +22,7 @@ import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.view.asyncTasks.status.GetStatusTask;
+import edu.byu.cs.tweeter.view.main.MainActivity;
 import edu.byu.cs.tweeter.view.util.ImageUtils;
 
 public abstract class StatusFragment extends Fragment {
@@ -57,7 +63,7 @@ public abstract class StatusFragment extends Fragment {
                 tweetMentions = itemView.findViewById(R.id.tweet_mentions);
                 tweetLinks = itemView.findViewById(R.id.tweet_links);
 
-                itemView.setOnClickListener(view -> Toast.makeText(getContext(),
+                itemView.findViewById(R.id.status_user_info).setOnClickListener(view -> Toast.makeText(getContext(),
                         "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show());
             } else {
                 userImage = null;
@@ -80,8 +86,24 @@ public abstract class StatusFragment extends Fragment {
 
             tweetTimestamp.setText(status.getTimestamp());
             tweetMessage.setText(status.getMessage());
-            tweetMentions.setText(status.getMention());
-            tweetLinks.setText(status.getLink());
+
+            SpannableString mention = new SpannableString(status.getMention());
+            mention.setSpan(new ClickableSpan() {
+                @Override
+                public void onClick(@NonNull View view) {
+
+                    // TODO: Start new user activity from here
+
+                    Toast.makeText(getActivity(), "You clicked me", Toast.LENGTH_SHORT).show();
+                }
+            }, 0, status.getMention().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tweetMentions.setText(mention);
+            tweetMentions.setMovementMethod(LinkMovementMethod.getInstance());
+
+            SpannableString url = new SpannableString(status.getLink());
+            url.setSpan(new URLSpan(status.getLink()), 0, status.getLink().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            tweetLinks.setText(url);
+            tweetLinks.setMovementMethod(LinkMovementMethod.getInstance());
         }
     }
 
