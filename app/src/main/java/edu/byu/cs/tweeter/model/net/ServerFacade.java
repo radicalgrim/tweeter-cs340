@@ -11,10 +11,12 @@ import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.request.FeedRequest;
+import edu.byu.cs.tweeter.model.service.request.FollowerRequest;
 import edu.byu.cs.tweeter.model.service.request.FollowingRequest;
 import edu.byu.cs.tweeter.model.service.request.LoginRequest;
 import edu.byu.cs.tweeter.model.service.request.StoryRequest;
 import edu.byu.cs.tweeter.model.service.response.FeedResponse;
+import edu.byu.cs.tweeter.model.service.response.FollowerResponse;
 import edu.byu.cs.tweeter.model.service.response.FollowingResponse;
 import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 import edu.byu.cs.tweeter.model.service.response.StoryResponse;
@@ -44,6 +46,7 @@ public class ServerFacade {
     static HashMap<User, AuthToken> userToAuthToken = new HashMap<>();
     static private User currentUser;
     static private AuthToken userAuthToken;
+
     // This is the hard coded followee data returned by the 'getFollowees()' method
     private static final String MALE_IMAGE_URL = "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/donald_duck.png";
     private static final String FEMALE_IMAGE_URL = "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/daisy_duck.png";
@@ -132,7 +135,7 @@ public class ServerFacade {
      * @return the login response.
      */
     public LoginResponse login(LoginRequest request) {
-        fillDummyArrays(getDummyFollowees(), getDummyPasswords());
+        fillDummyArrays(getDummyUsers(), getDummyPasswords());
 
         if (checkUsername(request.getUsername()) && checkPassword(request.getUsername(), request.getPassword())) {
             User userToReturn = aliasToUser.get(request.getUsername());
@@ -183,23 +186,37 @@ public class ServerFacade {
      */
     public FollowingResponse getFollowees(FollowingRequest request) {
         assertValidRequest(request.getLimit(), request.getFollowerAlias());
-
-        List<User> allFollowees = getDummyFollowees();
+        List<User> allFollowees = getDummyUsers();
         List<User> responseFollowees = new ArrayList<>(request.getLimit());
-
         boolean hasMorePages = false;
 
         if (request.getLimit() > 0) {
-            int followeesIndex = getFolloweesStartingIndex(request.getLastFolloweeAlias(), allFollowees);
-
+            int followeesIndex = getUsersStartingIndex(request.getLastFolloweeAlias(), allFollowees);
             for (int limitCounter = 0; followeesIndex < allFollowees.size() && limitCounter < request.getLimit(); followeesIndex++, limitCounter++) {
                 responseFollowees.add(allFollowees.get(followeesIndex));
             }
-
             hasMorePages = followeesIndex < allFollowees.size();
         }
 
         return new FollowingResponse(responseFollowees, hasMorePages);
+    }
+
+
+    public FollowerResponse getFollowers(FollowerRequest request) {
+        assertValidRequest(request.getLimit(), request.getFolloweeAlias());
+        List<User> allFollowers = getDummyUsers();
+        List<User> responseFollowers = new ArrayList<>(request.getLimit());
+        boolean hasMorePages = false;
+
+        if (request.getLimit() > 0) {
+            int followersIndex = getUsersStartingIndex(request.getLastFollowerAlias(), allFollowers);
+            for (int limitCounter = 0; followersIndex < allFollowers.size() && limitCounter < request.getLimit(); followersIndex++, limitCounter++) {
+                responseFollowers.add(allFollowers.get(followersIndex));
+            }
+            hasMorePages = followersIndex < allFollowers.size();
+        }
+
+        return new FollowerResponse(responseFollowers, hasMorePages);
     }
 
 
@@ -214,7 +231,7 @@ public class ServerFacade {
      * @param allFollowees      the generated list of followees from which we are returning paged results.
      * @return the index of the first followee to be returned.
      */
-    private int getFolloweesStartingIndex(String lastFolloweeAlias, List<User> allFollowees) {
+    private int getUsersStartingIndex(String lastFolloweeAlias, List<User> allFollowees) {
 
         int followeesIndex = 0;
 
@@ -239,7 +256,7 @@ public class ServerFacade {
      *
      * @return the followees.
      */
-    List<User> getDummyFollowees() {
+    List<User> getDummyUsers() {
         return Arrays.asList(user1, user2, user3, user4, user5, user6, user7,
                 user8, user9, user10, user11, user12, user13, user14, user15, user16, user17, user18,
                 user19, user20);

@@ -22,8 +22,8 @@ import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.request.FeedRequest;
 import edu.byu.cs.tweeter.model.service.response.StatusResponse;
 import edu.byu.cs.tweeter.presenter.FeedPresenter;
-import edu.byu.cs.tweeter.view.asyncTasks.GetFeedTask;
-import edu.byu.cs.tweeter.view.asyncTasks.GetStatusTask;
+import edu.byu.cs.tweeter.view.asyncTasks.status.GetFeedTask;
+import edu.byu.cs.tweeter.view.asyncTasks.status.GetStatusTask;
 
 public class FeedFragment extends StatusFragment implements FeedPresenter.View {
 

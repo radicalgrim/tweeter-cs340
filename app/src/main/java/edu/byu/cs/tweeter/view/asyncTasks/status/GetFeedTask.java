@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.view.asyncTasks;
+package edu.byu.cs.tweeter.view.asyncTasks.status;
 
 import android.os.AsyncTask;
 

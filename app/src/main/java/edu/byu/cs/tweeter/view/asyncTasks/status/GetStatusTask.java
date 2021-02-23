@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.view.asyncTasks;
+package edu.byu.cs.tweeter.view.asyncTasks.status;
 
 import edu.byu.cs.tweeter.model.service.response.StatusResponse;
 

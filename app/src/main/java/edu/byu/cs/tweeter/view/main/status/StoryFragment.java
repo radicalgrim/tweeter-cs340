@@ -23,7 +23,7 @@ import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.request.StoryRequest;
 import edu.byu.cs.tweeter.model.service.response.StatusResponse;
 import edu.byu.cs.tweeter.presenter.StoryPresenter;
-import edu.byu.cs.tweeter.view.asyncTasks.GetStoryTask;
+import edu.byu.cs.tweeter.view.asyncTasks.status.GetStoryTask;
 
 public class StoryFragment extends StatusFragment implements StoryPresenter.View {
 

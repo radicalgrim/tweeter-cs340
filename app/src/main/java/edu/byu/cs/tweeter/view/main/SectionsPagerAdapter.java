@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import edu.byu.cs.tweeter.R;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.view.main.follows.FollowerFragment;
 import edu.byu.cs.tweeter.view.main.follows.FollowingFragment;
 import edu.byu.cs.tweeter.view.main.status.FeedFragment;
 import edu.byu.cs.tweeter.view.main.status.StoryFragment;
@@ -41,14 +42,17 @@ class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == FOLLOWING_FRAGMENT_POSITION) {
-            return FollowingFragment.newInstance(user, authToken);
+        if (position == FEED_FRAGMENT_POSITION) {
+            return FeedFragment.newInstance(user, authToken);
         }
         else if (position == STORY_FRAGMENT_POSITION) {
             return StoryFragment.newInstance(user, authToken);
         }
-        else if (position == FEED_FRAGMENT_POSITION) {
-            return FeedFragment.newInstance(user, authToken);
+        else if (position == FOLLOWING_FRAGMENT_POSITION) {
+            return FollowingFragment.newInstance(user, authToken);
+        }
+        else if (position == FOLLOWERS_FRAGMENT_POSITION) {
+            return FollowerFragment.newInstance(user, authToken);
         }
         else {
             return PlaceholderFragment.newInstance(position + 1);
