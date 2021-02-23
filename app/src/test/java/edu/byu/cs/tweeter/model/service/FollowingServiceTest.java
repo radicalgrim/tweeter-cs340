@@ -78,7 +78,7 @@ public class FollowingServiceTest {
     public void testGetFollowees_validRequest_loadsProfileImages() throws IOException {
         FollowingResponse response = followingServiceSpy.getFollowees(validRequest);
 
-        for(User user : response.getFollowees()) {
+        for(User user : response.getUsers()) {
             Assertions.assertNotNull(user.getImageBytes());
         }
     }

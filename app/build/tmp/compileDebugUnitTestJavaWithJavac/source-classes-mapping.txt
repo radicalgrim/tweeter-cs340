@@ -1,8 +1,8 @@
 edu/byu/cs/tweeter/presenter/LogoutPresenterTest.java
  edu.byu.cs.tweeter.presenter.LogoutPresenterTest
  edu.byu.cs.tweeter.presenter.LogoutPresenterTest$1
-edu/byu/cs/tweeter/model/service/RegisterServiceTest.java
- edu.byu.cs.tweeter.model.service.RegisterServiceTest
+edu/byu/cs/tweeter/model/service/LogoutServiceTest.java
+ edu.byu.cs.tweeter.model.service.LogoutServiceTest
 edu/byu/cs/tweeter/presenter/FollowingPresenterTest.java
  edu.byu.cs.tweeter.presenter.FollowingPresenterTest
  edu.byu.cs.tweeter.presenter.FollowingPresenterTest$1
@@ -18,5 +18,5 @@ edu/byu/cs/tweeter/model/service/FollowingServiceTest.java
  edu.byu.cs.tweeter.model.service.FollowingServiceTest
 edu/byu/cs/tweeter/model/net/ServerFacadeTest.java
  edu.byu.cs.tweeter.model.net.ServerFacadeTest
-edu/byu/cs/tweeter/model/service/LogoutServiceTest.java
- edu.byu.cs.tweeter.model.service.LogoutServiceTest
+edu/byu/cs/tweeter/model/service/RegisterServiceTest.java
+ edu.byu.cs.tweeter.model.service.RegisterServiceTest
