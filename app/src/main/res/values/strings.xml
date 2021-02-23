@@ -31,7 +31,8 @@
     <string name="last_name_prompt">Last Name:</string>
     <string name="first_name_prompt">First Name:</string>
     <string name="sampleTimeStamp">6:00</string>
-    <string name="sample_message">This is a tweet.</string>
+    <string name="sample_message">This is a very long tweet to show what it looks like when the
+    tweet just keeps going</string>
     <string name="sample_mention">\@mention</string>
     <string name="sample_link">google.com</string>
 </resources>

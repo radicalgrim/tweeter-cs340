@@ -72,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements LogoutPresenter.V
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // TODO: Pop up a tweet writer dialog box
+
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }

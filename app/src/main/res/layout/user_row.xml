@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
-    tools:context=".view.main.following.FollowingFragment">
+    tools:context=".view.main.follows.FollowingFragment">
 
     <ImageView
         android:id="@+id/userImage"

@@ -13,9 +13,13 @@ public class User implements Comparable<User>, Serializable {
     private final String alias;
     private final String imageUrl;
     private byte [] imageBytes;
+    private int followerCount;
+    private int followingCount;
 
     public User(String firstName, String lastName, String imageURL) {
         this(firstName, lastName, String.format("@%s%s", firstName, lastName), imageURL);
+        followerCount = 0;
+        followingCount = 0;
     }
 
     public User(String firstName, String lastName, String alias, String imageURL) {
@@ -23,6 +27,8 @@ public class User implements Comparable<User>, Serializable {
         this.lastName = lastName;
         this.alias = alias;
         this.imageUrl = imageURL;
+        followerCount = 0;
+        followingCount = 0;
     }
 
     public String getFirstName() {
@@ -53,6 +59,39 @@ public class User implements Comparable<User>, Serializable {
         this.imageBytes = imageBytes;
     }
 
+    public int getFollowerCount() {
+        return followerCount;
+    }
+
+    public void setFollowerCount(int followerCount) {
+        this.followerCount = followerCount;
+    }
+
+    public int getFollowingCount() {
+        return followingCount;
+    }
+
+    public void setFollowingCount(int followingCount) {
+        this.followingCount = followingCount;
+    }
+
+    public void incrementFollowerCount() {
+        followerCount++;
+    }
+
+    public void decrementFollowerCount() {
+        followerCount--;
+    }
+
+    public void incrementFollowingCount() {
+        followingCount++;
+    }
+
+    public void decrementFollowingCount() {
+        followingCount--;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -80,4 +119,6 @@ public class User implements Comparable<User>, Serializable {
     public int compareTo(User user) {
         return this.getAlias().compareTo(user.getAlias());
     }
+
+
 }

@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.view.asyncTasks;
+package edu.byu.cs.tweeter.view.asyncTasks.follows;
 
 import android.os.AsyncTask;
 
@@ -11,20 +11,11 @@ import edu.byu.cs.tweeter.presenter.FollowingPresenter;
 /**
  * An {@link AsyncTask} for retrieving followees for a user.
  */
-public class GetFollowingTask extends AsyncTask<FollowingRequest, Void, FollowingResponse> {
+public class GetFollowingTask extends AsyncTask<FollowingRequest, Void, FollowingResponse> implements GetFollowsTask {
 
     private final FollowingPresenter presenter;
     private final Observer observer;
     private Exception exception;
-
-    /**
-     * An observer interface to be implemented by observers who want to be notified when this task
-     * completes.
-     */
-    public interface Observer {
-        void followeesRetrieved(FollowingResponse followingResponse);
-        void handleException(Exception exception);
-    }
 
     /**
      * Creates an instance.
@@ -72,7 +63,7 @@ public class GetFollowingTask extends AsyncTask<FollowingRequest, Void, Followin
         if(exception != null) {
             observer.handleException(exception);
         } else {
-            observer.followeesRetrieved(followingResponse);
+            observer.usersRetrieved(followingResponse);
         }
     }
 }
