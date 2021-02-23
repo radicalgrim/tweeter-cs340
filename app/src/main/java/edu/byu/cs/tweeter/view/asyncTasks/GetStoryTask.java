@@ -11,20 +11,11 @@ import edu.byu.cs.tweeter.presenter.StoryPresenter;
 /**
  * An {@link AsyncTask} for retrieving a user's story.
  */
-public class GetStoryTask extends AsyncTask<StoryRequest, Void, StoryResponse> {
+public class GetStoryTask extends AsyncTask<StoryRequest, Void, StoryResponse> implements GetStatusTask {
 
     private final StoryPresenter presenter;
     private final Observer observer;
     private Exception exception;
-
-    /**
-     * An observer interface to be implemented by observers who want to be notified when this task
-     * completes.
-     */
-    public interface Observer {
-        void storyRetrieved(StoryResponse response);
-        void handleException(Exception exception);
-    }
 
     /**
      * Creates an instance.
@@ -72,7 +63,7 @@ public class GetStoryTask extends AsyncTask<StoryRequest, Void, StoryResponse> {
         if(exception != null) {
             observer.handleException(exception);
         } else {
-            observer.storyRetrieved(response);
+            observer.statusesRetrieved(response);
         }
     }
 

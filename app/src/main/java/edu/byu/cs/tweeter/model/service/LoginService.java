@@ -11,7 +11,7 @@ import edu.byu.cs.tweeter.util.ByteArrayUtils;
 /**
  * Contains the business logic to support the login operation.
  */
-public class LoginService {
+public class LoginService extends AbstractService {
 
     public LoginResponse login(LoginRequest request) throws IOException {
         ServerFacade serverFacade = getServerFacade();
@@ -32,16 +32,5 @@ public class LoginService {
     private void loadImage(User user) throws IOException {
         byte [] bytes = ByteArrayUtils.bytesFromUrl(user.getImageUrl());
         user.setImageBytes(bytes);
-    }
-
-    /**
-     * Returns an instance of {@link ServerFacade}. Allows mocking of the ServerFacade class for
-     * testing purposes. All usages of ServerFacade should get their ServerFacade instance from this
-     * method to allow for proper mocking.
-     *
-     * @return the instance.
-     */
-    ServerFacade getServerFacade() {
-        return new ServerFacade();
     }
 }

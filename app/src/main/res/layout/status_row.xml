@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
-    tools:context=".view.main.story.StoryFragment">
+    tools:context=".view.main.status.StatusFragment">
 
     <LinearLayout
         android:layout_width="wrap_content"

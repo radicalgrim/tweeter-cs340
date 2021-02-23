@@ -2,14 +2,17 @@ package edu.byu.cs.tweeter.model.service;
 
 import java.io.IOException;
 
+import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.net.ServerFacade;
 import edu.byu.cs.tweeter.model.service.request.StoryRequest;
 import edu.byu.cs.tweeter.model.service.response.StoryResponse;
+import edu.byu.cs.tweeter.model.service.response.StoryResponse;
+import edu.byu.cs.tweeter.util.ByteArrayUtils;
 
 /**
  * Contains the business logic for getting the story of a particular user.
  */
-public class StoryService {
+public class StoryService extends AbstractService {
 
     /**
      * Returns the story of the specified user in the request. Uses information in the request
@@ -21,24 +24,20 @@ public class StoryService {
      * @return the story.
      */
     public StoryResponse getStory(StoryRequest request) throws IOException {
-        StoryResponse response = getServerFacade().getStatuses(request);
+        StoryResponse response = getServerFacade().getStory(request);
 
         if(response.isSuccess()) {
-            // TODO: Implement
+            loadImages(response);
         }
 
         return response;
     }
 
-    /**
-     * Returns an instance of {@link ServerFacade}. Allows mocking of the ServerFacade class for
-     * testing purposes. All usages of ServerFacade should get their ServerFacade instance from this
-     * method to allow for proper mocking.
-     *
-     * @return the instance.
-     */
-    ServerFacade getServerFacade() {
-        return new ServerFacade();
+    private void loadImages(StoryResponse response) throws IOException {
+        for(Status status : response.getStatuses()) {
+            byte [] bytes = ByteArrayUtils.bytesFromUrl(status.getUser().getImageUrl());
+            status.getUser().setImageBytes(bytes);
+        }
     }
 
 }

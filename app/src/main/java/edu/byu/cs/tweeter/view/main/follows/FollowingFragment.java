@@ -1,4 +1,4 @@
-package edu.byu.cs.tweeter.view.main.following;
+package edu.byu.cs.tweeter.view.main.follows;
 
 import android.os.Bundle;
 
@@ -71,7 +71,7 @@ public class FollowingFragment extends Fragment implements FollowingPresenter.Vi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_following, container, false);
+        View view = inflater.inflate(R.layout.fragment_follows, container, false);
 
         //noinspection ConstantConditions
         user = (User) getArguments().getSerializable(USER_KEY);

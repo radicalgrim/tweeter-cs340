@@ -10,7 +10,8 @@ import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 import edu.byu.cs.tweeter.model.service.response.RegisterResponse;
 import edu.byu.cs.tweeter.util.ByteArrayUtils;
 
-public class RegisterService {
+public class RegisterService extends AbstractService {
+
     public RegisterResponse register(RegisterRequest request) throws IOException {
         ServerFacade serverFacade = getServerFacade();
         RegisterResponse registerResponse = serverFacade.register(request);
@@ -30,16 +31,5 @@ public class RegisterService {
     private void loadImage(User user) throws IOException {
         byte [] bytes = ByteArrayUtils.bytesFromUrl(user.getImageUrl());
         user.setImageBytes(bytes);
-    }
-
-    /**
-     * Returns an instance of {@link ServerFacade}. Allows mocking of the ServerFacade class for
-     * testing purposes. All usages of ServerFacade should get their ServerFacade instance from this
-     * method to allow for proper mocking.
-     *
-     * @return the instance.
-     */
-    ServerFacade getServerFacade() {
-        return new ServerFacade();
     }
 }
