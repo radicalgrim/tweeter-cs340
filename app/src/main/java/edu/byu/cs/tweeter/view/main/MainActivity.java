@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity implements LogoutPresenter.V
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP |
                 Intent.FLAG_ACTIVITY_CLEAR_TOP);
         this.startActivity(intent);
+        ServerFacade.setInstance(null);
         finish();
     }
 

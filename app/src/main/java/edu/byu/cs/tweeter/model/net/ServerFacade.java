@@ -34,6 +34,9 @@ public class ServerFacade {
         }
         return instance;
     }
+    public static void setInstance(ServerFacade instance) {
+        ServerFacade.instance = instance;
+    }
 
     public ServerFacade(){}
 
