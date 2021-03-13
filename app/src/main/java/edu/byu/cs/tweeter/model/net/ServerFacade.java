@@ -11,19 +11,25 @@ import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.request.FeedRequest;
+import edu.byu.cs.tweeter.model.service.request.FollowRequest;
 import edu.byu.cs.tweeter.model.service.request.FollowerRequest;
 import edu.byu.cs.tweeter.model.service.request.FollowingRequest;
 import edu.byu.cs.tweeter.model.service.request.LoginRequest;
+import edu.byu.cs.tweeter.model.service.request.PostRequest;
 import edu.byu.cs.tweeter.model.service.request.StoryRequest;
+import edu.byu.cs.tweeter.model.service.request.UnfollowRequest;
 import edu.byu.cs.tweeter.model.service.response.FeedResponse;
+import edu.byu.cs.tweeter.model.service.response.FollowResponse;
 import edu.byu.cs.tweeter.model.service.response.FollowerResponse;
 import edu.byu.cs.tweeter.model.service.response.FollowingResponse;
 import edu.byu.cs.tweeter.model.service.response.LoginResponse;
+import edu.byu.cs.tweeter.model.service.response.PostResponse;
 import edu.byu.cs.tweeter.model.service.response.StoryResponse;
 import edu.byu.cs.tweeter.model.service.request.LogoutRequest;
 import edu.byu.cs.tweeter.model.service.request.RegisterRequest;
 import edu.byu.cs.tweeter.model.service.response.LogoutResponse;
 import edu.byu.cs.tweeter.model.service.response.RegisterResponse;
+import edu.byu.cs.tweeter.model.service.response.UnfollowResponse;
 
 /**
  * Acts as a Facade to the Tweeter server. All network requests to the server should go through
@@ -36,6 +42,7 @@ public class ServerFacade {
         if(instance == null){
             instance = new ServerFacade();
         }
+
         return instance;
     }
     public static void setInstance(ServerFacade instance) {
@@ -44,7 +51,7 @@ public class ServerFacade {
 
     public ServerFacade(){}
 
-    static HashMap<String, User> aliasToUser = new HashMap<>();
+    public static HashMap<String, User> aliasToUser = new HashMap<>();
     static HashMap<String, String> aliasToPassword = new HashMap<>();
     static HashMap<User, AuthToken> userToAuthToken = new HashMap<>();
     static private User currentUser;
@@ -222,6 +229,22 @@ public class ServerFacade {
         return new FollowerResponse(responseFollowers, hasMorePages);
     }
 
+    public FollowResponse follow(FollowRequest request){
+        currentUser.incrementFollowingCount();
+        return new FollowResponse(true);
+    }
+
+    public UnfollowResponse unfollow(UnfollowRequest request){
+        UnfollowResponse response = new UnfollowResponse(true);
+        currentUser.decrementFollowingCount();
+        int testVar = currentUser.getFollowingCount();
+        return response;
+    }
+
+    public PostResponse post(PostRequest request){
+        return new PostResponse();
+    }
+
 
 
     /**
@@ -389,6 +412,16 @@ public class ServerFacade {
                 throw new AssertionError();
             }
         }
+    }
+
+    public User getUser(String userAlias){
+        if(aliasToUser.size() == 0){
+            fillDummyArrays(getDummyUsers(), getDummyPasswords());
+        }
+        if(aliasToUser.containsKey(userAlias)) {
+            return aliasToUser.get(userAlias);
+        }
+        return null;
     }
 
 }

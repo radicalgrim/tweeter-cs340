@@ -1063,6 +1063,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addTweetButton
 id alertTitle
 id all
 id always
@@ -1115,6 +1116,7 @@ id fill_vertical
 id filled
 id firstNameField
 id fixed
+id followButton
 id followeeCount
 id followerCount
 id followsRecyclerView
@@ -1245,10 +1247,12 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tweetBody
 id tweet_links
 id tweet_mentions
 id tweet_message
 id tweet_timestamp
+id unfollowButton
 id uniform
 id unlabeled
 id up
@@ -1312,6 +1316,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_login
 layout activity_main
+layout activity_user
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1347,6 +1352,7 @@ layout notification_template_media
 layout notification_template_media_custom
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout post_dialogue
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material

@@ -15,7 +15,7 @@
 11-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:5:22-64
 12
 13    <application
-13-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:7:5-27:19
+13-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:7:5-31:19
 14        android:allowBackup="true"
 14-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -57,17 +57,24 @@
 34            android:label="@string/title_activity_main" >
 34-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:25:13-56
 35        </activity>
-36
-37        <provider
-37-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
-38            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-38-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
-39            android:authorities="edu.byu.cs.tweeter.lifecycle-process"
-39-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
-40            android:exported="false"
-40-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
-41            android:multiprocess="true" />
-41-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
-42    </application>
-43
-44</manifest>
+36        <activity
+36-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:27:9-30:20
+37            android:name="edu.byu.cs.tweeter.view.main.UserActivity"
+37-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:28:13-51
+38            android:label="User" >
+38-->C:\Users\brade\OneDrive\Desktop\Semester9\Cs340\App\Milestone2Colab\tweeter-cs340\app\src\main\AndroidManifest.xml:29:13-33
+39        </activity>
+40
+41        <provider
+41-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:23:9-27:43
+42            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+42-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:24:13-79
+43            android:authorities="edu.byu.cs.tweeter.lifecycle-process"
+43-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:25:13-69
+44            android:exported="false"
+44-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:26:13-37
+45            android:multiprocess="true" />
+45-->[androidx.lifecycle:lifecycle-process:2.0.0] C:\Users\brade\.gradle\caches\transforms-2\files-2.1\238c10d1ce435e53a2f343cecbbc5c20\jetified-lifecycle-process-2.0.0\AndroidManifest.xml:27:13-40
+46    </application>
+47
+48</manifest>

@@ -1,5 +1,6 @@
 package edu.byu.cs.tweeter.view.main.status;
 
+import android.content.Intent;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,13 +24,19 @@ import edu.byu.cs.tweeter.R;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.model.net.ServerFacade;
 import edu.byu.cs.tweeter.view.asyncTasks.status.GetStatusTask;
 import edu.byu.cs.tweeter.view.main.MainActivity;
+import edu.byu.cs.tweeter.view.main.UserActivity;
 import edu.byu.cs.tweeter.view.util.ImageUtils;
 
 public abstract class StatusFragment extends Fragment {
 
     protected static final String USER_KEY = "UserKey";
+    //protected static final String CLICKED_USER_KEY = "ClickedUserKey";
+    private static final String MALE_IMAGE_URL = "https://faculty.cs.byu.edu/~jwilkerson/cs340/tweeter/images/donald_duck.png";
+
+
     protected static final String AUTH_TOKEN_KEY = "AuthTokenKey";
 
     protected static final int LOADING_DATA_VIEW = 0;
@@ -49,7 +58,8 @@ public abstract class StatusFragment extends Fragment {
         protected final TextView tweetMessage;
         protected final TextView tweetMentions;
         protected final TextView tweetLinks;
-
+        
+        Status holderStatus;
         protected StatusHolder(@NonNull View itemView, int viewType) {
             super(itemView);
 
@@ -63,8 +73,29 @@ public abstract class StatusFragment extends Fragment {
                 tweetMentions = itemView.findViewById(R.id.tweet_mentions);
                 tweetLinks = itemView.findViewById(R.id.tweet_links);
 
-                itemView.findViewById(R.id.status_user_info).setOnClickListener(view -> Toast.makeText(getContext(),
-                        "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show());
+//                itemView.findViewById(R.id.status_user_info).setOnClickListener(view -> Toast.makeText(getContext(),
+//                        "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show());
+                /*Toast.makeText(getContext(),
+                        "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show()*/
+                itemView.findViewById(R.id.status_user_info).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(),
+                                "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), UserActivity.class);
+
+                        User userClicked = holderStatus.getUser();
+                        //User userClicked = new User("new", "User", MALE_IMAGE_URL);
+                        System.out.println("User clicked: " + userClicked.getFirstName());
+                        Toast.makeText(getContext(),
+                                "alias to look up: '" + userAlias.getText().toString() + "'.", Toast.LENGTH_SHORT).show();
+                        AuthToken currentToken = ServerFacade.getUserAuthToken();
+                        intent.putExtra(UserActivity.USER_KEY, userClicked);
+                        intent.putExtra(UserActivity.AUTH_TOKEN_KEY, currentToken);
+
+                        startActivity(intent);
+                    }
+                });
             } else {
                 userImage = null;
                 userAlias = null;
@@ -78,6 +109,7 @@ public abstract class StatusFragment extends Fragment {
         }
 
         void bindStatus(Status status) {
+            holderStatus = status;
             if (status.getUser().getImageBytes() != null) {
                 userImage.setImageDrawable(ImageUtils.drawableFromByteArray(status.getUser().getImageBytes()));
             }
@@ -94,7 +126,25 @@ public abstract class StatusFragment extends Fragment {
 
                     // TODO: Start new user activity from here
 
-                    Toast.makeText(getActivity(), "You clicked me", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "You clicked me: " + mention.toString(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), UserActivity.class);
+
+                    User userClicked = holderStatus.getUser();
+                    //User userClicked = new User("new", "User", MALE_IMAGE_URL);
+                    //System.out.println("User clicked: " + userClicked.getFirstName());
+//                    Toast.makeText(getContext(),
+//                            "alias to look up: '" + userAlias.getText().toString() + "'.", Toast.LENGTH_SHORT).show();
+                    AuthToken currentToken = ServerFacade.getUserAuthToken();
+                    intent.putExtra(UserActivity.USER_KEY, userClicked);
+                    intent.putExtra(UserActivity.AUTH_TOKEN_KEY, currentToken);
+
+                    startActivity(intent);
+//                    Intent intent = new Intent(this, UserActivity.class);
+//
+//                    intent.putExtra(MainActivity.CURRENT_USER_KEY, loginResponse.getUser());
+//                    intent.putExtra(MainActivity.AUTH_TOKEN_KEY, loginResponse.getAuthToken());
+//
+//                    startActivity(intent);
                 }
             }, 0, status.getMention().length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tweetMentions.setText(mention);

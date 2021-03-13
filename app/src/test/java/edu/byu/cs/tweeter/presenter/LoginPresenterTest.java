@@ -10,10 +10,13 @@ import java.util.Arrays;
 
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.model.service.LoginService;
 import edu.byu.cs.tweeter.model.service.FollowingService;
 import edu.byu.cs.tweeter.model.service.LoginService;
+import edu.byu.cs.tweeter.model.service.request.LoginRequest;
 import edu.byu.cs.tweeter.model.service.request.FollowingRequest;
 import edu.byu.cs.tweeter.model.service.request.LoginRequest;
+import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 import edu.byu.cs.tweeter.model.service.response.FollowingResponse;
 import edu.byu.cs.tweeter.model.service.response.LoginResponse;
 
@@ -33,36 +36,34 @@ public class LoginPresenterTest {
         request = new LoginRequest("@AllenAnderson", "randomPass1");
         response = new LoginResponse(userAllen, new AuthToken());
 
-        failRequest = new LoginRequest("@AllenAnderson", "randomPass2");
-        failResponse = new LoginResponse("couldn't find the user");
+        User fakeUser = new User("Mr", "FakeBoi", MALE_IMAGE_URL);
+        failRequest = new LoginRequest("@fakeyFakerton", "liarsPass");
+        failResponse = new LoginResponse("couldnt find the user");
 
         mockLoginService = Mockito.mock(LoginService.class);
-        Mockito.when(mockLoginService.login(request)).thenReturn(response);
+        //Mockito.when(mockLoginService.follow(request)).thenReturn(response);
 
         presenter = Mockito.spy(new LoginPresenter(new LoginPresenter.View() {}));
-        Mockito.when(presenter.login(request)).thenReturn(response);
+        //Mockito.when(presenter.follow(request)).thenReturn(response);
+        Mockito.when(presenter.getLoginService()).thenReturn(mockLoginService);
     }
 
     @Test
-    public void loginSuccess() throws IOException {
+    public void followSuccess() throws IOException {
         Mockito.when(mockLoginService.login(request)).thenReturn(response);
-
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
-        Assertions.assertEquals(response.getUser().getFirstName(), presenter.login(request).getUser().getFirstName());
-        Assertions.assertEquals(response.getUser().getLastName(), presenter.login(request).getUser().getLastName());
-        AuthToken authToken = presenter.login(request).getAuthToken();
-        Assertions.assertNotNull(presenter.login(request).getAuthToken());
+        Assertions.assertEquals(response.isSuccess(), presenter.login(request).isSuccess());
     }
     @Test
-    public void loginFail() throws IOException {
-        Mockito.when(mockLoginService.login(request)).thenReturn(response);
-
+    public void followFail() throws IOException {
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
-        Assertions.assertEquals(failResponse.isSuccess(), presenter.login(failRequest).isSuccess());
-        Assertions.assertEquals(failResponse.getMessage(), presenter.login(failRequest).getMessage());
+        Mockito.when(mockLoginService.login(request)).thenThrow(new IOException());
 
+        Assertions.assertThrows(IOException.class, () -> {
+            presenter.login(request);
+        });;
+//        Assertions.assertEquals(failResponse.getMessage(), presenter.follow(failRequest).getMessage());
     }
-
 }

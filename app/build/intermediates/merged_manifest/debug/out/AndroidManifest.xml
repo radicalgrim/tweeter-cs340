@@ -33,6 +33,10 @@
             android:name="edu.byu.cs.tweeter.view.main.MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name="edu.byu.cs.tweeter.view.main.UserActivity"
+            android:label="User" >
+        </activity>
 
         <provider
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"

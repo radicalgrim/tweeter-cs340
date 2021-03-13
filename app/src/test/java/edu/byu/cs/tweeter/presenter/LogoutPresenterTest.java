@@ -10,7 +10,10 @@ import java.io.IOException;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.LogoutService;
+import edu.byu.cs.tweeter.model.service.LogoutService;
 import edu.byu.cs.tweeter.model.service.request.LogoutRequest;
+import edu.byu.cs.tweeter.model.service.request.LogoutRequest;
+import edu.byu.cs.tweeter.model.service.response.LogoutResponse;
 import edu.byu.cs.tweeter.model.service.response.LogoutResponse;
 
 
@@ -35,27 +38,29 @@ public class LogoutPresenterTest {
         failResponse = new LogoutResponse("failed to logout user");
 
         mockLogoutService = Mockito.mock(LogoutService.class);
-        Mockito.when(mockLogoutService.logout(request)).thenReturn(response);
+        //Mockito.when(mockLogoutService.follow(request)).thenReturn(response);
 
         presenter = Mockito.spy(new LogoutPresenter(new LogoutPresenter.View() {}));
-        Mockito.when(presenter.logout(request)).thenReturn(response);
+        //Mockito.when(presenter.follow(request)).thenReturn(response);
+        Mockito.when(presenter.getLogoutService()).thenReturn(mockLogoutService);
     }
 
     @Test
-    public void logoutSuccess() throws IOException {
+    public void followSuccess() throws IOException {
         Mockito.when(mockLogoutService.logout(request)).thenReturn(response);
-
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
         Assertions.assertEquals(response.isSuccess(), presenter.logout(request).isSuccess());
     }
     @Test
-    public void logoutFail() throws IOException {
-        Mockito.when(mockLogoutService.logout(request)).thenReturn(response);
-
+    public void followFail() throws IOException {
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
-        Assertions.assertEquals(failResponse.isSuccess(), presenter.logout(failRequest).isSuccess());
-        Assertions.assertEquals(failResponse.getMessage(), presenter.logout(failRequest).getMessage());
+        Mockito.when(mockLogoutService.logout(request)).thenThrow(new IOException());
+
+        Assertions.assertThrows(IOException.class, () -> {
+            presenter.logout(request);
+        });;
+//        Assertions.assertEquals(failResponse.getMessage(), presenter.follow(failRequest).getMessage());
     }
 }

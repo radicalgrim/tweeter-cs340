@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\layout_loading_row.xml.flat",
-        "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\loading_row.xml"
-    },
-    {
         "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_status.xml.flat",
         "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\fragment_status.xml"
+    },
+    {
+        "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\layout_loading_row.xml.flat",
+        "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\loading_row.xml"
     },
     {
         "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
@@ -72,8 +72,16 @@
         "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_user.xml.flat",
+        "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\activity_user.xml"
+    },
+    {
         "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\layout_post_dialogue.xml.flat",
+        "source": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\src\\main\\res\\layout\\post_dialogue.xml"
     },
     {
         "merged": "C:\\Users\\brade\\OneDrive\\Desktop\\Semester9\\Cs340\\App\\Milestone2Colab\\tweeter-cs340\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_launcher_background.png.flat",

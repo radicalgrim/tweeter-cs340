@@ -1,5 +1,6 @@
 package edu.byu.cs.tweeter.view.main.follows;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,8 +15,11 @@ import java.util.List;
 
 import edu.byu.cs.tweeter.R;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
+import edu.byu.cs.tweeter.model.domain.Status;
 import edu.byu.cs.tweeter.model.domain.User;
+import edu.byu.cs.tweeter.model.net.ServerFacade;
 import edu.byu.cs.tweeter.view.asyncTasks.follows.GetFollowsTask;
+import edu.byu.cs.tweeter.view.main.UserActivity;
 import edu.byu.cs.tweeter.view.util.ImageUtils;
 
 public abstract class FollowsFragment extends Fragment {
@@ -38,6 +42,7 @@ public abstract class FollowsFragment extends Fragment {
         protected final TextView userAlias;
         protected final TextView userName;
 
+        User clickedUser;
         protected FollowsHolder(@NonNull View itemView, int viewType) {
             super(itemView);
 
@@ -46,8 +51,27 @@ public abstract class FollowsFragment extends Fragment {
                 userAlias = itemView.findViewById(R.id.userAlias);
                 userName = itemView.findViewById(R.id.userName);
                 
-                itemView.setOnClickListener(view -> Toast.makeText(getContext(),
-                        "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show());
+//                itemView.setOnClickListener(view -> Toast.makeText(getContext(),
+//                        "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show());
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Toast.makeText(getContext(),
+                                "You selected '" + userName.getText() + "'.", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), UserActivity.class);
+
+                        User userClicked = clickedUser;
+                        //User userClicked = new User("new", "User", MALE_IMAGE_URL);
+                        System.out.println("User clicked: " + userClicked.getFirstName());
+                        Toast.makeText(getContext(),
+                                "alias to look up: '" + userAlias.getText().toString() + "'.", Toast.LENGTH_SHORT).show();
+                        AuthToken currentToken = ServerFacade.getUserAuthToken();
+                        intent.putExtra(UserActivity.USER_KEY, userClicked);
+                        intent.putExtra(UserActivity.AUTH_TOKEN_KEY, currentToken);
+
+                        startActivity(intent);
+                    }
+                });
             } else {
                 userImage = null;
                 userAlias = null;
@@ -56,6 +80,8 @@ public abstract class FollowsFragment extends Fragment {
         }
 
         void bindUser(User user) {
+            //holderFollows = status;
+            clickedUser = user;
             if (user.getImageBytes() != null) {
                 userImage.setImageDrawable(ImageUtils.drawableFromByteArray(user.getImageBytes()));
             }

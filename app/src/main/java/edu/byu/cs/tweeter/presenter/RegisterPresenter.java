@@ -26,7 +26,11 @@ public class RegisterPresenter {
     }
 
     public RegisterResponse register(RegisterRequest registerRequest) throws IOException {
-        RegisterService registerService = new RegisterService();
+        RegisterService registerService = getRegisterService();
         return registerService.register(registerRequest);
+    }
+
+    public RegisterService getRegisterService(){
+        return new RegisterService();
     }
 }

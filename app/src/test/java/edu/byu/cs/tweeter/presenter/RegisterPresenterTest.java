@@ -11,7 +11,10 @@ import java.util.Arrays;
 import edu.byu.cs.tweeter.model.domain.AuthToken;
 import edu.byu.cs.tweeter.model.domain.User;
 import edu.byu.cs.tweeter.model.service.RegisterService;
+import edu.byu.cs.tweeter.model.service.RegisterService;
 import edu.byu.cs.tweeter.model.service.request.RegisterRequest;
+import edu.byu.cs.tweeter.model.service.request.RegisterRequest;
+import edu.byu.cs.tweeter.model.service.response.RegisterResponse;
 import edu.byu.cs.tweeter.model.service.response.RegisterResponse;
 
 public class RegisterPresenterTest {
@@ -27,39 +30,37 @@ public class RegisterPresenterTest {
     public void setup() throws IOException {
         User userAllen = new User("Allen", "Anderson", MALE_IMAGE_URL);
 
-        request = new RegisterRequest("Braden", "Borough", "@bborough", "randomPass1", MALE_IMAGE_URL);
+        request = new RegisterRequest("Allen", "Anderson","@AllenAnderson", "randomPass1", MALE_IMAGE_URL);
         response = new RegisterResponse(userAllen, new AuthToken());
 
-        failRequest = new RegisterRequest("Braden", "Borough", "@bborough", "randomPass1", "fakephotolink");
-        failResponse = new RegisterResponse("couldn't find the user");
+        User fakeUser = new User("Mr", "FakeBoi", MALE_IMAGE_URL);
+        failRequest = new RegisterRequest("Fakey", "Fakerton", "@fakeyFakerton", "liarsPass", MALE_IMAGE_URL);
+        failResponse = new RegisterResponse("couldnt register the user");
 
         mockRegisterService = Mockito.mock(RegisterService.class);
-        Mockito.when(mockRegisterService.register(request)).thenReturn(response);
+        //Mockito.when(mockRegisterService.follow(request)).thenReturn(response);
 
         presenter = Mockito.spy(new RegisterPresenter(new RegisterPresenter.View() {}));
-        Mockito.when(presenter.register(request)).thenReturn(response);
+        //Mockito.when(presenter.follow(request)).thenReturn(response);
+        Mockito.when(presenter.getRegisterService()).thenReturn(mockRegisterService);
     }
 
     @Test
-    public void registerSuccess() throws IOException {
+    public void followSuccess() throws IOException {
         Mockito.when(mockRegisterService.register(request)).thenReturn(response);
-
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
-        Assertions.assertEquals(response.getUser().getFirstName(), presenter.register(request).getUser().getFirstName());
-        Assertions.assertEquals(response.getUser().getLastName(), presenter.register(request).getUser().getLastName());
-        AuthToken authToken = presenter.register(request).getAuthToken();
-        Assertions.assertNotNull(presenter.register(request).getAuthToken());
+        Assertions.assertEquals(response.isSuccess(), presenter.register(request).isSuccess());
     }
     @Test
-    public void registerFail() throws IOException {
-        Mockito.when(mockRegisterService.register(request)).thenReturn(response);
-
+    public void followFail() throws IOException {
         // Assert that the presenter returns the same response as the service (it doesn't do
         // anything else, so there's nothing else to test).
+        Mockito.when(mockRegisterService.register(request)).thenThrow(new IOException());
 
-        //Assertions.assertEquals(failResponse.isSuccess(), presenter.register(failRequest).isSuccess());
-        //Assertions.assertEquals(failResponse.getMessage(), presenter.register(failRequest).getMessage());
-
+        Assertions.assertThrows(IOException.class, () -> {
+            presenter.register(request);
+        });;
+//        Assertions.assertEquals(failResponse.getMessage(), presenter.follow(failRequest).getMessage());
     }
 }

@@ -3,6 +3,7 @@ package edu.byu.cs.tweeter.presenter;
 import java.io.IOException;
 
 import edu.byu.cs.tweeter.model.service.LogoutService;
+import edu.byu.cs.tweeter.model.service.RegisterService;
 import edu.byu.cs.tweeter.model.service.request.LogoutRequest;
 import edu.byu.cs.tweeter.model.service.response.LogoutResponse;
 
@@ -28,7 +29,11 @@ public class LogoutPresenter {
 
 
     public LogoutResponse logout(LogoutRequest logoutRequest) throws IOException {
-        LogoutService logoutService = new LogoutService();
+        LogoutService logoutService = getLogoutService();
         return logoutService.logout(logoutRequest);
+    }
+
+    public LogoutService getLogoutService(){
+        return new LogoutService();
     }
 }
